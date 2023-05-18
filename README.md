@@ -6,4 +6,4 @@ This project aims to deploy a static generated blog using gatsby-js to showcase 
 
 ### built using
 
-![Nodejs](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white) ![GatsbyJS](https://img.shields.io/badge/Gatsby-663399.svg?style=for-the-badge&logo=Gatsby&logoColor=white) ![Yarn](https://img.shields.io/badge/Yarn-2C8EBB.svg?style=for-the-badge&logo=Yarn&logoColor=white) 
+![Nodejs](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white) ![GatsbyJS](https://img.shields.io/badge/Gatsby-663399.svg?style=for-the-badge&logo=Gatsby&logoColor=white) ![Yarn](https://img.shields.io/badge/Yarn-2C8EBB.svg?style=for-the-badge&logo=Yarn&logoColor=white) ![Typescript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
