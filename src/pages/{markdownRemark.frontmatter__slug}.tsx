@@ -1,5 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import AppLayout from "../components/AppLayout";
 
 interface IBlogPostTemplate {
   data?: any;
@@ -13,9 +14,11 @@ export default function BlogPostTemplate({
   return (
     <div>
       <div>
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <AppLayout>
+          <h1>{frontmatter.title}</h1>
+          <h2>{frontmatter.date}</h2>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </AppLayout>
       </div>
     </div>
   );
