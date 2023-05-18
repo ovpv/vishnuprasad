@@ -2,6 +2,8 @@
 
 ## Vishnuprasad's Portfolio
 
+**URL**: https://ovpv.netlify.app/
+
 This project aims to deploy a static generated blog using gatsby-js to showcase my skills in *web development*.
 
 ### built using
