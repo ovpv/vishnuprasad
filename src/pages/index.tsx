@@ -1,8 +1,9 @@
 import * as React from "react";
 import { graphql, type HeadFC, type PageProps } from "gatsby";
+import AppLayout from "../components/AppLayout";
+import { Box, Card, Typography } from "@mui/material";
 
 const IndexPage: React.FC<PageProps> = ({ data }) => {
-  console.log("data", data);
   const {
     allMarkdownRemark: { nodes },
   } = data as any;
@@ -14,13 +15,22 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
   }));
 
   return (
-    <main>
-      {posts.map(({ id, slug, title }: any) => (
-        <div id={id}>
-          <a href={slug}>{title}</a>
-        </div>
-      ))}
-    </main>
+    <AppLayout>
+      <main>
+        <Box mt={5}>
+          <Typography variant="h2">Vishnuprasad's Blog</Typography>
+          <Box my={5}>
+            {posts.map(({ id, slug, title }: any) => (
+              <Card>
+                <Box p={2}>
+                  <a href={slug}>{title}</a>
+                </Box>
+              </Card>
+            ))}
+          </Box>
+        </Box>
+      </main>
+    </AppLayout>
   );
 };
 
