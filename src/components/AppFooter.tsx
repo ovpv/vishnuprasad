@@ -23,7 +23,7 @@ const AppFooter: React.FC = () => {
       <ul style={socialLinksStyle}>
         <li>
           <a
-            href="https://www.linkedin.com/in/your-linkedin"
+            href="https://www.linkedin.com/in/ovpv/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -32,7 +32,7 @@ const AppFooter: React.FC = () => {
         </li>
         <li>
           <a
-            href="https://github.com/your-github"
+            href="https://github.com/ovpv"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -41,7 +41,7 @@ const AppFooter: React.FC = () => {
         </li>
         <li>
           <a
-            href="https://twitter.com/your-twitter"
+            href="https://twitter.com/ovpv"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -50,7 +50,7 @@ const AppFooter: React.FC = () => {
         </li>
         <li>
           <a
-            href="https://www.instagram.com/your-instagram"
+            href="https://www.instagram.com/ovpv"
             target="_blank"
             rel="noopener noreferrer"
           >

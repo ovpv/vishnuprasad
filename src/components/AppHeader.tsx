@@ -2,6 +2,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import Breadcrumb from "./BreadCrumbs";
+import { Link } from "gatsby";
 
 interface HeaderProps {
   title: string;
@@ -22,9 +23,16 @@ const AppHeader: React.FC<HeaderProps> = ({ title, subtitle }) => {
             sx={{
               display: "flex",
               padding: "1rem",
+              background: "#d7e9ff",
+              "& > a": {
+                textDecoration: "none",
+                color: "#3a3a3a",
+              },
             }}
           >
-            <Typography variant="h4">Vishnuprasad's Blog</Typography>
+            <Link to="/">
+              <Typography variant="h4">Vishnuprasad's Blog</Typography>
+            </Link>
           </Box>
           <Box sx={headerStyle}>
             <Container maxWidth="lg">
