@@ -2,17 +2,24 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import AppLayout from "../components/AppLayout";
 import AppHeader from "../components/AppHeader";
-import { Typography } from "@mui/material";
+import { Disqus } from "gatsby-plugin-disqus";
 
 interface IBlogPostTemplate {
   data?: any;
 }
 
+const SITE_URL = `https://ovpv.dev`;
+
 export default function BlogPostTemplate({
   data, // this prop will be injected by the GraphQL query below.
 }: IBlogPostTemplate) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark;
+  const { frontmatter, html, id } = markdownRemark;
+  const disqusConfig = {
+    url: `${SITE_URL + location.pathname}`,
+    identifier: id,
+    title: frontmatter.title,
+  };
   return (
     <div>
       <div>
@@ -22,6 +29,8 @@ export default function BlogPostTemplate({
         />
         <AppLayout>
           <div dangerouslySetInnerHTML={{ __html: html }} />
+          {/* Disqus comments */}
+          <Disqus config={disqusConfig} />
         </AppLayout>
       </div>
     </div>
