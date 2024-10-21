@@ -21,7 +21,11 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           <Typography variant="h2">Vishnuprasad's Blog</Typography>
           <Box my={5}>
             {posts.map(({ id, slug, title }: any) => (
-              <Card>
+              <Card
+                sx={{
+                  mb: 3,
+                }}
+              >
                 <Box p={2}>
                   <a href={slug}>{title}</a>
                 </Box>

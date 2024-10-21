@@ -31,12 +31,12 @@ const AppHeader: React.FC<HeaderProps> = ({ title, subtitle }) => {
             }}
           >
             <Link to="/">
-              <Typography variant="h4">Vishnuprasad's Blog</Typography>
+              <Typography variant="h6">Vishnuprasad's Blog</Typography>
             </Link>
           </Box>
           <Box sx={headerStyle}>
             <Container maxWidth="lg">
-              <Typography variant="h4">{title}</Typography>
+              <Typography variant="h6">{title}</Typography>
               {subtitle && <Typography variant="body1">{subtitle}</Typography>}
               <Breadcrumb path={breadcrumbPath} />
             </Container>
