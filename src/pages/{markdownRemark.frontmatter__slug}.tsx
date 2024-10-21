@@ -16,7 +16,7 @@ export default function BlogPostTemplate({
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html, id } = markdownRemark;
   const disqusConfig = {
-    url: `${SITE_URL + location.pathname}`,
+    url: `${SITE_URL}`,
     identifier: id,
     title: frontmatter.title,
   };
