@@ -1,4 +1,3 @@
-// src/components/Header.tsx
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import Breadcrumb from "./BreadCrumbs";
@@ -7,12 +6,13 @@ import { Link } from "gatsby";
 interface HeaderProps {
   title: string;
   subtitle?: string;
+  slug: string; // Add slug to the props
 }
 
-const AppHeader: React.FC<HeaderProps> = ({ title, subtitle }) => {
+const AppHeader: React.FC<HeaderProps> = ({ title, subtitle, slug }) => {
   const breadcrumbPath = [
     { name: "Home", link: "/" },
-    { name: title, link: "" },
+    { name: title, link: `/blog/${slug}` }, // Dynamically add the slug here
   ];
 
   return (
