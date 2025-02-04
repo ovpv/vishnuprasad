@@ -26,71 +26,69 @@ Implementing cancellable network requests is useful in the following scenarios:
 
 The AbortController is a Web API that allows you to abort one or more web requests as needed. In Axios, you can use an instance of AbortController to add a cancellation mechanism to your network requests.
 
-`const controller = new AbortController();`
+```javascript
+const controller = new AbortController();
+```
 
 **Step 2: Attach the signal to Your Axios Request**
 
 Once you have an instance of AbortController, pass its signal property to your Axios request by including it in the request options.
 
-```
-
+```javascript
 const fetchImages = () => {
-return axios.get("https://picsum.photos/v2/list", { signal: controller.signal });
+  return axios.get("https://picsum.photos/v2/list", {
+    signal: controller.signal,
+  });
 };
-
 ```
 
 **Step 3: Execute the Cancel Operation**
 
 You can invoke the cancel operation whenever necessary by calling the abort() method on the controller. In the example below, the API call is automatically cancelled if the network request is not resolved within 700 milliseconds.
 
-```
-
+```javascript
 // Define the cancel operation
 const cancelLoad = () => {
-controller.abort();
-console.log("Request aborted");
+  controller.abort();
+  console.log("Request aborted");
 };
 
 // Cancel the request if it takes more than 700ms
 setTimeout(() => {
-cancelLoad();
+  cancelLoad();
 }, 700);
-
 ```
 
 **Full Example**
 
 Putting it all together:
 
-```
-
-const axios = require('axios');
+```javascript
+const axios = require("axios");
 const controller = new AbortController();
 
 const fetchImages = () => {
-    return axios
-        .get("https://picsum.photos/v2/list", { signal: controller.signal })
-        .then(response => {
-            console.log('Images:', response.data);
-            })
-        .catch(error => {
-            if (error.name === 'CanceledError') {
-                console.log('Request canceled:', error.message);
-            } else {
-                console.error('Error:', error.message);
-            }
-        });
+  return axios
+    .get("https://picsum.photos/v2/list", { signal: controller.signal })
+    .then((response) => {
+      console.log("Images:", response.data);
+    })
+    .catch((error) => {
+      if (error.name === "CanceledError") {
+        console.log("Request canceled:", error.message);
+      } else {
+        console.error("Error:", error.message);
+      }
+    });
 };
 
 fetchImages();
 
 // Cancel the request if it takes more than 700ms
 setTimeout(() => {
-    controller.abort();
-    console.log("Request aborted after 700ms");
+  controller.abort();
+  console.log("Request aborted after 700ms");
 }, 700);
-
 ```
 
 **Check out the full output here**

@@ -1,51 +1,47 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
+import { Box, Container, Typography, Divider } from "@mui/material"; // Parsing HTML content to React components
 import AppLayout from "../components/AppLayout";
-import AppHeader from "../components/AppHeader";
-import { Disqus } from "gatsby-plugin-disqus";
 
 interface IBlogPostTemplate {
   data?: any;
 }
 
-const SITE_URL = `https://ovpv.dev`;
+const BlogPostTemplate: React.FC<IBlogPostTemplate> = ({ data }) => {
+  const { frontmatter, html } = data.markdownRemark;
 
-export default function BlogPostTemplate({
-  data, // this prop will be injected by the GraphQL query below.
-}: IBlogPostTemplate) {
-  const { markdownRemark } = data; // data.markdownRemark holds your post data
-  const { frontmatter, html, id } = markdownRemark;
-  const disqusConfig = {
-    url: `${SITE_URL}`,
-    identifier: id,
-    title: frontmatter.title,
-  };
   return (
-    <div>
-      <div>
-        <AppHeader
-          title={frontmatter.title}
-          subtitle={`posted on ${frontmatter.date}`}
-        />
-        <AppLayout>
+    <AppLayout>
+      <Container maxWidth="md">
+        {/* Blog Header */}
+        <Box py={5} textAlign="center">
+          <Typography variant="h3" fontWeight="bold">
+            {frontmatter.title}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Posted on {frontmatter.date}
+          </Typography>
+        </Box>
+
+        {/* Blog Content */}
+        <Box>
           <div dangerouslySetInnerHTML={{ __html: html }} />
-          {/* Disqus comments */}
-          <Disqus config={disqusConfig} />
-        </AppLayout>
-      </div>
-    </div>
+        </Box>
+      </Container>
+    </AppLayout>
   );
-}
+};
 
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        slug
         title
+        date(formatString: "MMMM DD, YYYY")
       }
     }
   }
 `;
+
+export default BlogPostTemplate;
